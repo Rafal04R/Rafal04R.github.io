@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Paper, Rock, Scissors</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin-ext" rel="stylesheet">
+  </head>
+  <body>
+    <div role="application" class="game">
+      <header class="header">
+
+      <h1 class="game__title">Rock  Paper Scissors Game!</h1>
+    </header>
+    <main class="main">
+
+      <div class="grid">
+        <h2 id="player_score" class="game__score"> 0</h2>
+        <h2 class="game__score">Score</h2>
+        <h2 id="computer_score" class="game__score">0 </h2>
+
+      </div>
+
+          <div class="grid">
+            <h3 class="game__player">Player</h3>
+          <h3 class="game__computer">Computer</h3>
+        </div>
+      <div class="grid">
+
+          <ul id="player_tools" class="game__tool-list">
+            <li id="Player_paper">
+              <img src="./player_paper_hand.png"   data-tool="paper"   class="tool tool--clickable"   alt="Choose Paper">
+            </li>
+            <li id="Player_rock">
+              <img src="./player_rock_hand.png"    data-tool="rock"    class="tool tool--clickable"   alt="Choose Rock">
+            </li>
+            <li id="Player_scissor">
+              <img src="./player_scissor_hand.png" data-tool="scissor" class="tool tool--clickable"   alt="Choose Scissors">
+            </li>
+          </ul>
+
+          <div id="player_choosen" class="game__tool-choosen">
+            <img src="./player_paper_hand.png"   data-tool="paper"    class="tool tool--hidden" alt="Choosen: Paper">
+            <img src="./player_rock_hand.png"    data-tool="rock"     class="tool tool--hidden" alt="Choosen: Rock">
+            <img src="./player_scissor_hand.png" data-tool="scissor"  class="tool tool--hidden" alt="Choosen: Scissor">
+          </div>
+
+          <div class="game__VERSUS">VS</div>
+
+          <div id="computer_choosen" class="game__tool-choosen">
+            <img src="./computer_paper_hand.png"   data-tool="paper"   class="tool tool--hidden" alt="Choosen: Paper">
+            <img src="./computer_rock_hand.png"    data-tool="rock"    class="tool tool--hidden" alt="Choosen: Rock">
+            <img src="./computer_scissor_hand.png" data-tool="scissor" class="tool tool--hidden" alt="Choosen: Scissor">
+          </div>
+
+          <ul class="game__tool-list">
+            <li id="Computer_paper">
+              <img src="./computer_paper_hand.png" data-tool="paper" class="tool" alt="Paper">
+            </li>
+            <li id="Computer_rock">
+              <img src="./computer_rock_hand.png" data-tool="rock" class="tool" alt="Rock">
+            </li>
+            <li id="Computer_scissor">
+              <img src="./computer_scissor_hand.png" data-tool="scissor" class="tool" alt="Scissor">
+            </li>
+          </ul>
+        </div>
+        <div class="grid">
+            <button  id="fight-btn" class="game__btn" >Fight!</button>
+        </div>
+    <footer class="footer">
+
+    <div class="grid">
+      <div id="winner_notification" class="game__notification"></div>
+    </div>
+
+  </footer>
+</main>
+</div>
+
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
