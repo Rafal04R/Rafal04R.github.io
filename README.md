@@ -1,3 +1,3 @@
 # Rock-Paper-Scissors
 
-Demo : Rafal04R.github.io
+[Demo](Rafal04R.github.io)
