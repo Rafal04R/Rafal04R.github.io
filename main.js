@@ -33,10 +33,12 @@ function resetScore()
   player.score   = 0;
   computer.score = 0;
 }
+
+const playerScoreDOM = _id('player_score')
+const computerScoreDOM = _id('computer_score')
 function updateScore()
 {
   playerScoreDOM.textContent = player.score;
-
   computerScoreDOM.textContent = computer.score;
 }
 function resetChoosensImages()
@@ -74,6 +76,8 @@ function hideWinner()
 {
   winnerNotficiationDOM.textContent = '';
 }
+
+const computerChoosenDOM = _id('computer_choosen');
 function startDuel()
 {
   if(!player.lastPickedTool || !player.lastPickedTool.dataset)
@@ -116,36 +120,8 @@ function createPlayersTools()
   const computerTool = new Tool(computerToolName);
   computer.setTool(computerTool)
 }
-const playerToolsDOM = _id('player_tools');
 
 const playerChoosenDOM = _id('player_choosen');
-const computerChoosenDOM = _id('computer_choosen');
-
-const playerScoreDOM = _id('player_score')
-const computerScoreDOM = _id('computer_score')
-
-const fightButtonDOM = _id('fight-btn');
-
-const winnerNotficiationDOM = _id('winner_notification')
-
-const POINTS_TO_WON = 3;
-
-let isMatchEnd = false;
-
-
-fightButtonDOM.addEventListener('click',() => {
-    if(isMatchEnd === false)
-    {
-      startDuel();
-    }
-    else{
-      resetGame()
-      isMatchEnd = false;
-      fightButtonDOM.textContent = `Fight!`;
-    }
-
-}, false);
-
 function onPlayerToolClicked(e)
 {
   if(e.target && e.target.matches('.tool'))
@@ -161,7 +137,34 @@ function onPlayerToolClicked(e)
     winnerNotficiationDOM.textContent = ''
   }
 }
+const playerToolsDOM = _id('player_tools');
+
 playerToolsDOM.addEventListener('click', onPlayerToolClicked, false);
+
+
+const winnerNotficiationDOM = _id('winner_notification')
+
+const POINTS_TO_WON = 3;
+
+
+const fightButtonDOM = _id('fight-btn');
+let isMatchEnd = false;
+
+fightButtonDOM.addEventListener('click',() => {
+    if(isMatchEnd === false)
+    {
+      startDuel();
+    }
+    else
+    {
+      resetGame()
+      isMatchEnd = false;
+      fightButtonDOM.textContent = `Fight!`;
+    }
+
+}, false);
+
+
 
 class Tool {
   constructor(name, options){
