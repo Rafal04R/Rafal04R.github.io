@@ -72,7 +72,6 @@ function startDuel()
 {
   if(!player.lastPickedTool || !player.lastPickedTool.dataset)
 {
-  console.warn('You must pick a tool!')
   return;
 }
   createPlayersTools();
