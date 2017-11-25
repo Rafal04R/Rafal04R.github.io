@@ -42,10 +42,14 @@ function updateScore()
 function resetChoosensImages()
 {
   if(player.lastPickedTool.classList.contains('tool--show'))
-  player.lastPickedTool.classList.remove('tool--show')
+  {
+    player.lastPickedTool.classList.remove('tool--show')
+  }
 
   if(computer.lastPickedTool.classList.contains('tool--show'))
-  computer.lastPickedTool.classList.remove('tool--show')
+  {
+    computer.lastPickedTool.classList.remove('tool--show')
+  }
 }
 function resetPlayersProperties()
 {
@@ -130,8 +134,10 @@ let isMatchEnd = false;
 
 
 fightButtonDOM.addEventListener('click',() => {
-    if(!isMatchEnd)
-    startDuel();
+    if(isMatchEnd === false)
+    {
+      startDuel();
+    }
     else{
       resetGame()
       isMatchEnd = false;
@@ -144,7 +150,6 @@ function onPlayerToolClicked(e)
 {
   if(e.target && e.target.matches('.tool'))
   {
-
     player.updateChoosenImage(playerChoosenDOM, {
       className: 'tool--show',
       targetToolName : e.target.dataset.tool
@@ -184,10 +189,15 @@ class Player {
   }
   updateChoosenImage(DOMnode, options)
   {
-      if(!DOMnode.children)return;
+      if(!DOMnode.children)
+      {
+        return false
+      };
 
       if(this.lastPickedTool && this.lastPickedTool.classList.contains(options.className))
+      {
         this.lastPickedTool.classList.remove(options.className);
+      }
 
       for (let j = 0; j < DOMnode.children.length; j++) {
         const current = DOMnode.children[j]
