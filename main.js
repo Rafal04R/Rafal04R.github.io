@@ -1,12 +1,6 @@
 'use strict';
 (function(){
 
-function _id(id)
-{
-  return document.getElementById(id);
-}
-///////////////////////////////////////////
-///////////////////////////////////////////
 function getRandomToolName()
 {
   const toolNames = ['paper','rock','scissor'];
@@ -34,8 +28,8 @@ function resetScore()
   computer.score = 0;
 }
 
-const playerScoreDOM = _id('player_score')
-const computerScoreDOM = _id('computer_score')
+const playerScoreDOM = document.getElementById('player_score')
+const computerScoreDOM = document.getElementById('computer_score')
 function updateScore()
 {
   playerScoreDOM.textContent = player.score;
@@ -77,7 +71,7 @@ function hideWinner()
   winnerNotficiationDOM.textContent = '';
 }
 
-const computerChoosenDOM = _id('computer_choosen');
+const computerChoosenDOM = document.getElementById('computer_choosen');
 function startDuel()
 {
   if(!player.lastPickedTool || !player.lastPickedTool.dataset)
@@ -121,7 +115,7 @@ function createPlayersTools()
   computer.setTool(computerTool)
 }
 
-const playerChoosenDOM = _id('player_choosen');
+const playerChoosenDOM = document.getElementById('player_choosen');
 function onPlayerToolClicked(e)
 {
   if(e.target && e.target.matches('.tool'))
@@ -137,17 +131,17 @@ function onPlayerToolClicked(e)
     winnerNotficiationDOM.textContent = ''
   }
 }
-const playerToolsDOM = _id('player_tools');
+const playerToolsDOM = document.getElementById('player_tools');
 
 playerToolsDOM.addEventListener('click', onPlayerToolClicked, false);
 
 
-const winnerNotficiationDOM = _id('winner_notification')
+const winnerNotficiationDOM = document.getElementById('winner_notification')
 
 const POINTS_TO_WON = 3;
 
 
-const fightButtonDOM = _id('fight-btn');
+const fightButtonDOM = document.getElementById('fight-btn');
 let isMatchEnd = false;
 
 fightButtonDOM.addEventListener('click',() => {
