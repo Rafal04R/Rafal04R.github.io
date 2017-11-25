@@ -1,7 +1,6 @@
 'use strict';
 (function(){
 
-
 function _id(id)
 {
   return document.getElementById(id);
@@ -220,21 +219,19 @@ class ToolComparator {
   }
   compare(playerTool, computerTool)
   {
-    if(playerTool.name === computerTool.name)return {playerPoints : 0, computerPoints : 0, roundResult: 'Draw!'};
-    //paper                  rock
+    if(playerTool.name === computerTool.name)
+    {
+      return {playerPoints : 0, computerPoints : 0, roundResult: 'Draw!'};
+    }
     const playerBeatsArray = this.BEATS[playerTool.name].beats;
-
     const computerBeatsArray = this.BEATS[computerTool.name].beats;
 
-      for (let i = 0; i < playerBeatsArray.length; i++) {
-        const currentBeat = playerBeatsArray[i];
+      playerBeatsArray.forEach(function(currentBeat){
         if(currentBeat === computerTool.name)
         {
           return {playerPoints : 1, computerPoints : 0, roundResult : 'Player wins!'};
-
         }
-      }
-
+      });
       return {playerPoints : 0, computerPoints : 1, roundResult : 'Computer wins!'};
 }
 }
