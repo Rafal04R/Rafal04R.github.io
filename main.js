@@ -9,11 +9,7 @@ function getRandomToolName()
 }
 function isGameOver()
 {
-  if(player.score === POINTS_TO_WON  || computer.score === POINTS_TO_WON)
-  {
-    return true;
-  }
-  return false;
+  return (player.score === POINTS_TO_WON  || computer.score === POINTS_TO_WON)
 }
 function resetGame()
 {
