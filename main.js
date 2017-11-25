@@ -197,10 +197,9 @@ class Player {
         {
           current.classList.add(options.className);
           this.lastPickedTool = current;
-          break;
+          return true;
         }
       }
-
     }
 }
 
