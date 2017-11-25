@@ -7,6 +7,7 @@ function getRandomToolName()
   const randomIndex = Math.floor(Math.random() * toolNames.length);
   return toolNames[randomIndex];
 }
+const POINTS_TO_WON = 3;
 function isGameOver()
 {
   return (player.score === POINTS_TO_WON  || computer.score === POINTS_TO_WON)
@@ -133,7 +134,6 @@ playerToolsDOM.addEventListener('click', onPlayerToolClicked, false);
 
 const winnerNotficiationDOM = document.getElementById('winner_notification')
 
-const POINTS_TO_WON = 3;
 
 
 const fightButtonDOM = document.getElementById('fight-btn');
