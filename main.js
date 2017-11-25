@@ -72,7 +72,7 @@ function startDuel()
 {
   if(!player.lastPickedTool || !player.lastPickedTool.dataset)
 {
-  return;
+  return false;
 }
   createPlayersTools();
 
