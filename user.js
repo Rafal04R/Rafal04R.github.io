@@ -5,14 +5,20 @@ const userModule = (function(){
     constructor()
     {
       super();
+      this.choosenDOM = document.getElementById('player_choosen');
 
     }
     createTool()
     {
-      const toolName = player.lastPickedTool.dataset.tool;
-      const tool = new toolModule.Tool(ToolName)
-      if(this.tool)
-      this.tool = tool;
+      const toolName = this.lastPickedTool.dataset.tool;
+      const tool = new toolModule.Tool(toolName)
+      if(tool)
+      {
+        this.tool = tool;
+      }
     }
+  }
+  return {
+    User
   }
 })();

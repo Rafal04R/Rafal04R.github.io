@@ -7,6 +7,7 @@ const helpers = helpersModule;
     constructor()
     {
       super();
+      this.choosenDOM = document.getElementById('computer_choosen');
 
     }
     createTool()
@@ -18,5 +19,8 @@ const helpers = helpersModule;
         this.tool = tool;
       }
     }
+  }
+  return {
+    Computer
   }
 })();

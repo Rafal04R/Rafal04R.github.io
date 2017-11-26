@@ -1,9 +1,9 @@
 const roundModule = (function(){
 
 class Round {
-  constructor(player, computer, toolComparator)
+  constructor(user, computer, toolComparator)
   {
-    this.player = player;
+    this.user = user;
     this.computer = computer;
 
     this.toolComparator = toolComparator;
@@ -11,8 +11,7 @@ class Round {
   }
   execute()
   {
-    return this.toolComparator.compare(player.tool, computer.tool);
-
+    return this.toolComparator.compare(this.user.tool, this.computer.tool);
   }
 
 }

@@ -5,8 +5,9 @@ const playerModule = (function(){
 
     constructor()
     {
-      this.tool = null;
       this.score = 0;
+      this.choosenDOM = null;
+      this.tool = null;
       this.lastPickedTool = null;
     }
     setTool(tool = null)
@@ -20,20 +21,20 @@ const playerModule = (function(){
         this.lastPickedTool.classList.remove('tool--show');
       }
     }
-    updateChoosenImage(DOMnode, options)
+    updateChoosenImage(options)
     {
-        if(!DOMnode.children)
+        if(!this.choosenDOM.children)
         {
           return false
-        };
+        }
 
         if(this.lastPickedTool && this.lastPickedTool.classList.contains(options.className))
         {
           this.lastPickedTool.classList.remove(options.className);
         }
 
-        for (let j = 0; j < DOMnode.children.length; j++) {
-          const current = DOMnode.children[j]
+        for (let j = 0; j < this.choosenDOM.children.length; j++) {
+          const current = this.choosenDOM.children[j]
           if(current.matches('.tool') && current.dataset.tool === options.targetToolName)
           {
             current.classList.add(options.className);

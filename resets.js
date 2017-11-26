@@ -1,52 +1,50 @@
 const gameResetModule = (function(){
 
-let player = null;
-let computer = null;
-function _constructor(_player, _computer)
-{
-  player   = _player;
-  computer = _computer;
-}
-function resetGame()
-{
-  resetScore();
+class GameReseter {
+  constructor(player, computer)
+  {
+    this.player = player;
+    this.computer = computer;
+
+  }
+  resetGame()
+  {
+      this.resetScore();
+      this.resetChoosensImages()
+      this.resetPlayersProperties();
+  }
+  resetScore()
+  {
+      this.player.score   = 0;
+      this.computer.score = 0;
+  }
   resetChoosensImages()
-  resetPlayersProperties();
-}
-function resetScore()
-{
-  player.score   = 0;
-  computer.score = 0;
-}
-function resetChoosensImages()
-{
-  if(player.lastPickedTool.classList.contains('tool--show'))
   {
-    player.lastPickedTool.classList.remove('tool--show')
-  }
+    if(this.player.lastPickedTool.classList.contains('tool--show'))
+    {
+        this.player.lastPickedTool.classList.remove('tool--show')
+    }
 
-  if(computer.lastPickedTool.classList.contains('tool--show'))
+    if(this.computer.lastPickedTool.classList.contains('tool--show'))
+    {
+      this.computer.lastPickedTool.classList.remove('tool--show')
+    }
+   }
+  resetPlayersProperties()
   {
-    computer.lastPickedTool.classList.remove('tool--show')
+
+      this.player.tool = null;
+      this.player.lastPickedTool = null;
+
+      this.computer.tool = null;
+      this.computer.lastPickedTool = null;
+
   }
-}
-function resetPlayersProperties()
-{
-
-  player.tool = null;
-  player.lastPickedTool = null;
-
-  computer.tool = null;
-  computer.lastPickedTool = null;
 
 }
 
 return {
-  _constructor,
-  resetGame,
-  resetScore,
-  resetChoosensImages,
-  resetPlayersProperties,
+  GameReseter
 }
 
-})()
+})();
