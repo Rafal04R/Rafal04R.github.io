@@ -18,9 +18,10 @@ const toolComparatorModule = (function(){
     }
     compare(playerTool, computerTool)
     {
+
       if(playerTool.name === computerTool.name)
       {
-        return {userPoints : 0, computerPoints : 0, roundResult: 'Draw!'};
+        return {userPoints : 0, computerPoints : 0, result: 'Draw!'};
       }
       const playerBeatsArray = this.BEATS[playerTool.name].beats;
       const computerBeatsArray = this.BEATS[computerTool.name].beats;
@@ -30,10 +31,10 @@ const toolComparatorModule = (function(){
         const currentBeat = playerBeatsArray[i];
         if(currentBeat === computerTool.name)
         {
-          return {userPoints : 1, computerPoints : 0, roundResult : 'Player wins!'};
+          return {userPoints : 1, computerPoints : 0, result : 'Player wins!'};
         }
        }
-       return {userPoints : 0, computerPoints : 1, roundResult : 'Computer wins!'};
+       return {userPoints : 0, computerPoints : 1, result : 'Computer wins!'};
 
      }
 

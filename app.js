@@ -12,19 +12,12 @@ const appModule = (function(){
 
       this.gameReseter = gameReseter;
 
-      this.POINTS_TO_WON = 3;
-
       this.playerScoreDOM = document.getElementById('player_score')
       this.computerScoreDOM = document.getElementById('computer_score')
-
-      this.winnerNotficiationDOM = document.getElementById('winner_notification')
-
-
 
       this.playerToolsDOM = document.getElementById('player_tools')
 
       this.fightButtonDOM = document.getElementById('fight-btn');
-
 
     }
     start()
@@ -44,20 +37,17 @@ const appModule = (function(){
             className: 'tool--show',
             targetToolName : e.target.dataset.tool
           });
-
           this.computer.hideChoosenImage();
-
-          this.winnerNotficiationDOM.textContent = ''
         }
     }
     onFightButtonClicked()
     {
-      if(!this.isGameOver())
+      if(this.match.isEnd(this.user, this.computer) === false)
       {
-        this.match.executeRound();
+        this.match.executeRound(this.user, this.computer, this.toolComparator);
         this.updateScore();
 
-        if(this.isGameOver())
+        if(this.match.isEnd(this.user, this.computer) === true)
         {
             this.fightButtonDOM.textContent = `Reset Game`
         }
@@ -67,34 +57,14 @@ const appModule = (function(){
         this.gameReseter.resetGame()
         this.updateScore();
 
-        this.match.isEnd = false;
         this.fightButtonDOM.textContent = `Fight!`;
-        this.hideWinner();
+        this.match.hideWinner();
       }
-
-    }
-    isGameOver()
-    {
-      return (this.user.score === this.POINTS_TO_WON  || this.computer.score === this.POINTS_TO_WON)
     }
     updateScore()
     {
       this.playerScoreDOM.textContent   = this.user.score;
       this.computerScoreDOM.textContent = this.computer.score;
-    }
-    showMatchWinner()
-    {
-      const matchWinner = this.user.score > this.computer.score ? 'Player' : 'Computer';
-      this.winnerNotficiationDOM.textContent =`${matchWinner} has won!`;
-
-    }
-    showRoundResult(roundResultText)
-    {
-      this.winnerNotficiationDOM.textContent = roundResultText;
-    }
-    hideWinner()
-    {
-      this.winnerNotficiationDOM.textContent = '';
     }
   }
   return {

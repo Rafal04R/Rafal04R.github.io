@@ -4,33 +4,56 @@ const matchModule = (function(){
   class Match {
     constructor(user, computer, toolComparator)
     {
-      this.user   = user;
-      this.computer = computer;
-      this.toolComparator = toolComparator
-      this.winner = '';
-      this.isEnd = false;
+      this.POINTS_TO_WON = 3;
+      this.winnerNotficiationDOM = document.getElementById('winner_notification')
     }
-    executeRound()
+    isEnd(user, computer)
     {
-      this.user.createTool();
-      this.computer.createTool();
-
-      if(this.user.tool && this.computer.tool)
+      return this.isGameOver(user, computer);
+    }
+    executeRound(user, computer, toolComparator)
+    {
+      user.createTool();
+      computer.createTool();
+      if(user.tool && computer.tool && toolComparator)
       {
-      const round = new roundModule.Round(this.user, this.computer, this.toolComparator);
+      const round = new roundModule.Round(user.tool, computer.tool, toolComparator);
       const roundResult = round.execute();
 
-      const computerToolName = this.computer.tool.name;
-      this.computer.updateChoosenImage({
+      computer.updateChoosenImage({
         className: 'tool--show',
-        targetToolName : computerToolName
+        targetToolName : computer.tool.name
       });
-      console.log(roundResult)
-      this.user.score   += roundResult.userPoints;
-      this.computer.score += roundResult.computerPoints;
 
+
+      user.score     += roundResult.userPoints;
+      computer.score += roundResult.computerPoints;
+
+      this.showRoundResult(roundResult.result)
+
+      if(this.isGameOver(user, computer))
+      {
+        this.showWinner(user, computer);
+      }
 
       }
+    }
+    isGameOver(user, computer)
+    {
+      return (user.score === this.POINTS_TO_WON  || computer.score === this.POINTS_TO_WON)
+    }
+    showWinner(user, computer)
+    {
+      const matchWinner = user.score > computer.score ? 'Player' : 'Computer';
+      this.winnerNotficiationDOM.textContent =`${matchWinner} has won!`;
+    }
+    hideWinner()
+    {
+      this.winnerNotficiationDOM.textContent = '';
+    }
+    showRoundResult(roundResultText)
+    {
+      this.winnerNotficiationDOM.textContent = roundResultText;
     }
   }
   return {

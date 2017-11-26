@@ -10,10 +10,11 @@ const userModule = (function(){
     }
     createTool()
     {
-      const toolName = this.lastPickedTool.dataset.tool;
-      const tool = new toolModule.Tool(toolName)
-      if(tool)
+      if(this.lastPickedTool && this.lastPickedTool.dataset)
       {
+
+        const toolName = this.lastPickedTool.dataset.tool;
+        const tool = new toolModule.Tool(toolName)
         this.tool = tool;
       }
     }
